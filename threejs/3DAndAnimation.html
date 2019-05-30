@@ -24,6 +24,21 @@
       animate();
 
       function init() {
+        initCameraAndScene();
+        const grassTexture = initGrassTexture();
+        initSurface(grassTexture);
+        initAmbientLight();
+      }
+
+      function animate() {
+        // render the scene
+
+        requestAnimationFrame(animate);
+
+        renderer.render(scene, camera);
+      }
+
+      function initCameraAndScene(){
         scene = new THREE.Scene();
         camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
         renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -36,15 +51,20 @@
         camera.lookAt(scene.position);
 
         document.getElementById('output').appendChild(renderer.domElement);
+      }
+
+      function initGrassTexture() {
         let grassTexture = new THREE.TextureLoader().load(
-          "texture/grass_4.jpg"
+                "texture/grass_4.jpg"
         );
         grassTexture.repeat.set(200, 200);
         grassTexture.wrapS = THREE.RepeatWrapping;
         grassTexture.wrapT = THREE.RepeatWrapping;
         grassTexture.magFilter = THREE.NearestFilter;
         grassTexture.minFilter = THREE.LinearMipMapLinearFilter;
-
+        return grassTexture;
+      }
+      function initSurface(grassTexture){
         const surface = new THREE.PlaneGeometry(1000, 1000);
         const surfaceMaterial = new THREE.MeshPhongMaterial({
           color: 0xcccccc,
@@ -56,19 +76,13 @@
         surfaceMesh.position.y = -50;
         surfaceMesh.position.x = -300;
         scene.add(surfaceMesh);
-
-        var ambiColor = "#ffffff";
-        var ambientLight = new THREE.AmbientLight(ambiColor, 1);
+      }
+      function initAmbientLight() {
+        const ambiColor = "#ffffff";
+        const ambientLight = new THREE.AmbientLight(ambiColor, 1);
         scene.add(ambientLight);
       }
 
-      function animate() {
-        // render the scene
-
-        requestAnimationFrame(animate);
-
-        renderer.render(scene, camera);
-      }
     </script>
   </body>
 </html>
