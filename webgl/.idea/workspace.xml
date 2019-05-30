@@ -19,7 +19,7 @@
         <entry file="file://$PROJECT_DIR$/webgl-project.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="246">
-              <caret line="191" selection-start-line="191" selection-end-line="191" />
+              <caret line="191" column="1" selection-start-line="191" selection-start-column="1" selection-end-line="191" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -131,16 +131,15 @@
       <option name="presentableId" value="Default" />
       <updated>1558945699348</updated>
       <workItem from="1558945700773" duration="8374000" />
-      <workItem from="1558979281587" duration="194000" />
+      <workItem from="1558979281587" duration="828000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8568000" />
+    <option name="totallyTimeSpent" value="9202000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2494043" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -178,7 +177,7 @@
     <entry file="file://$PROJECT_DIR$/webgl-project.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="246">
-          <caret line="191" selection-start-line="191" selection-end-line="191" />
+          <caret line="191" column="1" selection-start-line="191" selection-start-column="1" selection-end-line="191" selection-end-column="1" />
         </state>
       </provider>
     </entry>
