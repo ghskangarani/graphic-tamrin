@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Skeleton</title>
+    <script type="text/javascript" src="lib/three.js"></script>
+    <style>
+      body {
+        /* set margin to 0 and overflow to hidden, to go fullScreen */
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Div which will hold the Output -->
+    <div id="output"></div>
+
+    <script type="text/javascript">
+      let scene, camera, renderer;
+      const { innerWidth: width, innerHeight: height } = window;
+
+      init();
+      animate();
+
+      function init() {
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setClearColor(new THREE.Color(0x000000));
+        renderer.setSize(width, height);
+
+        camera.position.x = 100;
+        camera.position.y = 80;
+        camera.position.z = 200;
+        camera.lookAt(scene.position);
+
+        document.getElementById('output').appendChild(renderer.domElement);
+        let grassTexture = new THREE.TextureLoader().load(
+          "texture/grass_4.jpg"
+        );
+        grassTexture.repeat.set(200, 200);
+        grassTexture.wrapS = THREE.RepeatWrapping;
+        grassTexture.wrapT = THREE.RepeatWrapping;
+        grassTexture.magFilter = THREE.NearestFilter;
+        grassTexture.minFilter = THREE.LinearMipMapLinearFilter;
+
+        const surface = new THREE.PlaneGeometry(1000, 1000);
+        const surfaceMaterial = new THREE.MeshPhongMaterial({
+          color: 0xcccccc,
+          side: THREE.DoubleSide,
+          map: grassTexture
+        });
+        let surfaceMesh = new THREE.Mesh(surface, surfaceMaterial);
+        surfaceMesh.rotateX(Math.PI / 2);
+        surfaceMesh.position.y = -50;
+        surfaceMesh.position.x = -300;
+        scene.add(surfaceMesh);
+
+        var ambiColor = "#ffffff";
+        var ambientLight = new THREE.AmbientLight(ambiColor, 1);
+        scene.add(ambientLight);
+      }
+
+      function animate() {
+        // render the scene
+
+        requestAnimationFrame(animate);
+
+        renderer.render(scene, camera);
+      }
+    </script>
+  </body>
+</html>
